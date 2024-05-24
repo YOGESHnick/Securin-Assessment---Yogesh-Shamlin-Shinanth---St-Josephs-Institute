@@ -3,12 +3,12 @@ import axios from 'axios';
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-
 function CVEList() {
     const [cves, setCves] = useState([]);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
     const [totalPages, setTotalPages] = useState(1);
+    const [totalRecords, setTotalRecords] = useState(0);
 
     useEffect(() => {
         fetchCves(page, limit);
@@ -19,6 +19,7 @@ function CVEList() {
             const response = await axios.get(`http://localhost:8080/api/cves?page=${page}&limit=${limit}`);
             setCves(response.data.docs);
             setTotalPages(response.data.totalPages);
+            setTotalRecords(response.data.totalDocs); 
         } catch (error) {
             console.error('Error fetching CVE data:', error);
         }
@@ -36,6 +37,7 @@ function CVEList() {
     return (
         <div className="CVEList">
             <h1>CVE List</h1>
+            <p>Total Records: {totalRecords}</p> {/* Display total records */}
             <table>
                 <thead>
                     <tr>
