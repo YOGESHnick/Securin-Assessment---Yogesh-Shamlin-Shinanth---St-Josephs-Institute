@@ -27,6 +27,46 @@ th {
 .limit-selector {
   margin-top: 20px;
 }
-a{
+
+a {
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th, td {
+    padding: 12px 8px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination button {
+    margin-bottom: 10px;
+  }
+
+  .limit-selector {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  th, td {
+    padding: 10px 5px;
+  }
+
+  .pagination {
+    align-items: center;
+  }
+
+  .pagination button {
+    margin-bottom: 5px;
+  }
 }

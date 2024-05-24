@@ -39,6 +39,7 @@ router.get('/cves', async (req, res) => {
 router.get('/cves/:id', async (req, res) => {
     try {
         const cve = await CVE.findOne({ cve_id: req.params.id });
+        console.log(cve);
         if (!cve) {
             return res.status(404).send('CVE not found');
         }
