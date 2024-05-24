@@ -12,6 +12,7 @@ router.get('/fetch-cves', async (req, res) => {
     while (startIndex < totalRecords) {
         try {
             const response = await axios.get(baseURL);
+            // console.log(response.data.vulnerabilities[0].configurations.nodes);
             
             const { totalResults, vulnerabilities } = response.data;
             totalRecords = totalResults;
@@ -33,7 +34,7 @@ router.get('/fetch-cves', async (req, res) => {
                     references: cveData.references,
                 });
 
-                await cve.save();
+                // await cve.save();
             }
 
             startIndex += resultsPerPage;
